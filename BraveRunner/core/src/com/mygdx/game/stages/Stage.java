@@ -11,7 +11,7 @@ public abstract class Stage {
 
     protected Stage(GameStageManager gsm){
         cam = new OrthographicCamera();
-        cam.setToOrtho(false, 240, 240);
+        cam.setToOrtho(false, 240, 200);
         this.gsm = gsm;
     }
 

@@ -1,12 +1,10 @@
-package com.mygdx.game.Character;
+package com.mygdx.game.character;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector3;
 
 public class Character {
     private static final int GRAVITY = -15;
-    private static final int MOVEMENT = 50;
 
     private Vector3 position;
     private Vector3 velocity;
@@ -15,7 +13,7 @@ public class Character {
     public Character(int x, int y){
         position = new Vector3(x, y, 0);
         velocity = new Vector3(0, 0, 0);
-        texture = new Texture("rsz_sprite_mario_transparent.png");
+        texture = new Texture("marioTexture.png");
     }
 
     public void update(float deltaTime){
@@ -27,25 +25,24 @@ public class Character {
         position.add(velocity.x * deltaTime, velocity.y, 0);
 
 
-        if (position.y < 0){
-            position.y = 0;
+        if (position.y < 100){
+            position.y = 100;
         }
 
         velocity.scl(1 / deltaTime);
     }
 
     public void jump(){
-        velocity.y = 250;
+        velocity.y = 400;
     }
 
     public void goRight(){
-        velocity.x += 250;
-        stopLeft();
+        position.x += 5;
 
     }
 
-    public void stopLeft(){
-        velocity.x -= 250;
+    public void goLeft(){
+        position.x -= 5;
     }
 
 

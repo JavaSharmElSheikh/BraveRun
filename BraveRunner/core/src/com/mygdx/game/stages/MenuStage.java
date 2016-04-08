@@ -13,7 +13,6 @@ public class MenuStage extends Stage{
 
     public MenuStage(GameStageManager gsm){
         super(gsm);
-        texture = new Texture("badlogic.jpg");
         startButton = new Texture("startSprite.png");
     }
 

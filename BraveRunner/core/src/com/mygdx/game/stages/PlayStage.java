@@ -4,7 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.mygdx.game.Character.Character;
+import com.mygdx.game.character.Character;
 
 public class PlayStage extends Stage{
     Texture bg;
@@ -12,9 +12,9 @@ public class PlayStage extends Stage{
 
     public PlayStage(GameStageManager gsm){
         super(gsm);
-        player = new Character(100,100);
-        bg = new Texture("badlogic.jpg");
-        cam.setToOrtho(false, 700, 700);
+        player = new Character(100,300);
+        bg = new Texture("SuperMarioBros-World2-Area1.png");
+        cam.setToOrtho(false, 600, 500);
     }
 
     @Override
@@ -30,12 +30,20 @@ public class PlayStage extends Stage{
         cam.position.x = player.getPosition().x + 80;
         player.update(dt);
 
-        if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
+        if (Gdx.input.isKeyPressed(Input.Keys.UP) ||
+                Gdx.input.isKeyPressed(Input.Keys.W)) {
+            if (player.getY() <= 100)
             player.jump();
         }
 
-        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
+        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT) ||
+                Gdx.input.isKeyPressed(Input.Keys.D)) {
             player.goRight();
+        }
+
+        if (Gdx.input.isKeyPressed(Input.Keys.LEFT) ||
+                Gdx.input.isKeyPressed(Input.Keys.A)) {
+            player.goLeft();
         }
 
         cam.update();
@@ -45,7 +53,7 @@ public class PlayStage extends Stage{
     public void render(SpriteBatch sb) {
         sb.setProjectionMatrix(cam.combined);
         sb.begin();
-        sb.draw(bg, 100, 0);
+        sb.draw(bg, -120, -147);
         sb.draw(player.getTexture(), player.getPosition().x, player.getPosition().y);
         sb.end();
     }
