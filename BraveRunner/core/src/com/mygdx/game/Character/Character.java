@@ -26,8 +26,8 @@ public class Character {
         position.add(velocity.x * deltaTime, velocity.y, 0);
 
         // implement collision
-        if (position.y < 93){
-            position.y = 93;
+        if (position.y < 30){
+            position.y = 30;
         }
 
         velocity.scl(1 / deltaTime);
@@ -67,5 +67,9 @@ public class Character {
 
     public Vector3 getPosition(){
         return position;
+    }
+
+    public void dispose(){
+        texture.dispose();
     }
 }

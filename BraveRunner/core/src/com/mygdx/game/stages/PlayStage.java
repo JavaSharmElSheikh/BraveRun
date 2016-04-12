@@ -5,14 +5,17 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.game.character.Character;
+import com.mygdx.game.monsters.Monster;
 
 public class PlayStage extends Stage{
-    Texture bg;
-    Character player;
+    private Texture bg;
+    private Character player;
+    private Monster monster;
 
     public PlayStage(GameStageManager gsm){
         super(gsm);
         player = new Character(100,150);
+        monster = new Monster(200, 150);
         bg = new Texture("Mario_0.4_map.png");
         cam.setToOrtho(false, 800, 500);
     }
@@ -42,8 +45,10 @@ public class PlayStage extends Stage{
         handleInput();
         cam.position.x = player.getPosition().x + 50;
         player.update(deltaTime);
+        monster.update(deltaTime);
         cam.update();
     }
+
 
     @Override
     public void render(SpriteBatch sb) {
@@ -51,11 +56,14 @@ public class PlayStage extends Stage{
         sb.begin();
         sb.draw(bg, 0, 0);
         sb.draw(player.getTexture(), player.getPosition().x, player.getPosition().y);
+        sb.draw(monster.getTexture(), monster.getPosition().x, monster.getPosition().y);
         sb.end();
     }
 
     @Override
     public void dispose() {
-
+        monster.dispose();
+        player.dispose();
+        bg.dispose();
     }
 }

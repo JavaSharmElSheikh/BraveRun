@@ -34,6 +34,6 @@ public class MenuStage extends Stage{
 
     @Override
     public void dispose() {
-
+        startButton.dispose();
     }
 }
