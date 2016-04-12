@@ -49,7 +49,7 @@ public class PlayStage extends Stage{
     public void render(SpriteBatch sb) {
         sb.setProjectionMatrix(cam.combined);
         sb.begin();
-        sb.draw(bg, 0, 30);
+        sb.draw(bg, 0, 0);
         sb.draw(player.getTexture(), player.getPosition().x, player.getPosition().y);
         sb.end();
     }
