@@ -4,12 +4,9 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Rectangle;
 
 public class MenuStage extends Stage{
-    private Texture texture;
     private Texture startButton;
-    private Rectangle rect;
 
     public MenuStage(GameStageManager gsm){
         super(gsm);
@@ -24,14 +21,14 @@ public class MenuStage extends Stage{
     }
 
     @Override
-    public void update(float dt) {
+    public void update(float deltaTime) {
         handleInput();
     }
 
     @Override
     public void render(SpriteBatch sb) {
         sb.begin();
-        sb.draw(startButton, 100, 100);
+        sb.draw(startButton, 275, 225);
         sb.end();
     }
 

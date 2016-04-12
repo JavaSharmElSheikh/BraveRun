@@ -5,6 +5,7 @@ import com.badlogic.gdx.math.Vector3;
 
 public class Character {
     private static final int GRAVITY = -15;
+    private static final int MOVEMENT_SPEED = 4;
 
     private Vector3 position;
     private Vector3 velocity;
@@ -24,9 +25,9 @@ public class Character {
         velocity.scl(deltaTime);
         position.add(velocity.x * deltaTime, velocity.y, 0);
 
-
-        if (position.y < 100){
-            position.y = 100;
+        // implement collision
+        if (position.y < 93){
+            position.y = 93;
         }
 
         velocity.scl(1 / deltaTime);
@@ -37,14 +38,12 @@ public class Character {
     }
 
     public void goRight(){
-        position.x += 5;
-
+        position.x += MOVEMENT_SPEED;
     }
 
     public void goLeft(){
-        position.x -= 5;
+        position.x -= MOVEMENT_SPEED;
     }
-
 
     public float getX(){
         return position.x;

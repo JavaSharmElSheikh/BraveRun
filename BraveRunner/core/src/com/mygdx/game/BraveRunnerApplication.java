@@ -20,12 +20,10 @@ public class BraveRunnerApplication extends ApplicationAdapter {
 		gsm = new GameStageManager();
 		gsm.push(new MenuStage(gsm));
 		Gdx.gl.glClearColor(1, 1, 1 ,1);
-
 	}
 
 	@Override
 	public void render () {
-
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		gsm.update(Gdx.graphics.getDeltaTime());
 		gsm.render(spriteBatch);
